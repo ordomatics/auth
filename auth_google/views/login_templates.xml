@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Only where the project set a Google client: without one there is no button. -->
+    <template id="login_google" inherit_id="web.login" name="Sign in with Google">
+        <xpath expr="//div[hasclass('o_login_auth')]" position="inside">
+            <t t-set="google_client_id" t-value="request.env['res.users'].sudo()._google_client_id()"/>
+            <t t-if="google_client_id">
+                <div class="o_auth_google_divider d-flex align-items-center gap-2 my-3 small text-muted">
+                    <hr class="flex-grow-1 my-0"/><span>or</span><hr class="flex-grow-1 my-0"/>
+                </div>
+                <div id="o_auth_google" class="d-flex justify-content-center" t-att-data-client-id="google_client_id"/>
+                <script src="https://accounts.google.com/gsi/client" async="async" defer="defer"/>
+            </t>
+        </xpath>
+    </template>
+</odoo>
