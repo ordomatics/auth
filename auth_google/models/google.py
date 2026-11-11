@@ -15,6 +15,11 @@ def google_client_id():
     return (os.environ.get("GOOGLE_CLIENT_ID") or "").strip()
 
 
+def google_api_key():
+    """The same project's browser key: it opens the Google Drive picker."""
+    return (os.environ.get("GOOGLE_API_KEY") or "").strip()
+
+
 def verify_id_token(id_token):
     """The verified email a Google sign-in credential vouches for, or None.
 
